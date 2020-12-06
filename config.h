@@ -16,10 +16,10 @@ static const char *fonts[]          = { "Input Mono:size=12", "Input Serif:size=
 static const char dmenufont[]       = "Input Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_thinkpad[]    = "#e2221a";
-/* static const char col_thinkpad[]    = "#e60012"; */
+static const char col_gray3[]       = "#BBBBBB";
+static const char col_gray4[]       = "#EEEEEE";
+static const char col_thinkpad[]    = "#E2231A";
+/* static const char col_thinkpad[]    = "#E2221A"; */
 
 static const char *colors[][3]      = {
     /*                fg         bg             border   */
