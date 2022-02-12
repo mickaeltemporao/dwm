@@ -41,6 +41,8 @@ like this in your .xinitrc:
     done &
     exec dwm
 
+# Patches included
+- https://dwm.suckless.org/patches/vanitygaps/dwm-vanitygaps-20200610-f09418b.diff
 
 Configuration
 -------------
