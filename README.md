@@ -41,9 +41,17 @@ like this in your .xinitrc:
     done &
     exec dwm
 
+# Patching
+
+- Download `foo-patch.diff` file
+- Move `foo-patch.diff` file into dwm folder
+- run `patch --merge -i foo-patch.diff`
+- run `sudo make clean install`
+
 # Patches included
 
 - [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/dwm-vanitygaps-20200610-f09418b.diff)
+- [statuspadding](https://dwm.suckless.org/patches/statuspadding/dwm-statuspadding-6.3.diff)
 
 Configuration
 -------------
