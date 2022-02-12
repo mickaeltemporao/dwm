@@ -58,9 +58,10 @@ static const Rule rules[] = {
 /* commands */
 #include <X11/XF86keysym.h>
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run" };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *scrncmd[]  = { "maimpick", NULL};
+static const char *dmenucmd[] = { "dmenu_run" };
+static const char *pscrncmd[] = { "printscreen",  NULL};
+static const char *sscrncmd[] = { "selectscreen",  NULL};
 static const char *brupcmd[]  = { "light", "-A", ".33", NULL };
 static const char *brdwcmd[]  = { "light", "-U", ".33", NULL };
 static const char *volucmd[]  = { "pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -93,7 +94,8 @@ static Key keys[]             = {
     { MODKEY,           XK_period,                focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask, XK_comma,                 tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask, XK_period,                tagmon,         {.i = +1 } },
-    { 0,                XK_Print,                 spawn,          {.v = scrncmd } },
+    { 0,                XK_Print,                 spawn,          {.v = printscreen } },
+    { MODKEY,           XK_Print,                 spawn,          {.v = selectscreen } },
     { 0,                XF86XK_MonBrightnessUp,   spawn,          {.v = brupcmd } },
     { 0,                XF86XK_MonBrightnessDown, spawn,          {.v = brdwcmd } },
     { 0,                XF86XK_AudioRaiseVolume,  spawn,          {.v = volucmd} },
