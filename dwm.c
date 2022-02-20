@@ -1064,7 +1064,17 @@ manage(Window w, XWindowAttributes *wa)
 
     if (c->x + WIDTH(c) > c->mon->mx + c->mon->mw)
         c->x = c->mon->mx + c->mon->mw - WIDTH(c);
+<<<<<<<
     if (c->y + HEIGHT(c) > c->mon->my + c->mon->mh)
+=======
+		c->isfloating = c->oldstate = trans != None || c->isfixed;
+	if (c->isfloating)
+		XRaiseWindow(dpy, c->win);
+	attach(c);
+	attachstack(c);
+	XChangeProperty(dpy, root, netatom[NetClientList], XA_WINDOW, 32, PropModeAppend,
+		(unsigned char *) &(c->win), 1);
+>>>>>>>
         c->y = c->mon->my + c->mon->mh - HEIGHT(c);
     c->x = MAX(c->x, c->mon->mx);
     /* only fix client y-offset, if the client center might cover the bar */
@@ -1419,7 +1429,17 @@ scan(void)
                 manage(wins[i], &wa);
         }
         for (i = 0; i < num; i++) { /* now the transients */
+<<<<<<<
             if (!XGetWindowAttributes(dpy, wins[i], &wa))
+=======
+	detachstack(c);
+	c->mon = m;
+	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
+	attach(c);
+	attachstack(c);
+	focus(NULL);
+	arrange(NULL);
+>>>>>>>
                 continue;
             if (XGetTransientForHint(dpy, wins[i], &d1)
             && (wa.map_state == IsViewable || getstate(wins[i]) == IconicState))
@@ -1901,7 +1921,17 @@ unmanage(Client *c, int destroyed)
     Monitor *m = c->mon;
     XWindowChanges wc;
 
+<<<<<<<
     detach(c);
+=======
+					m->clients = c->next;
+					detachstack(c);
+					c->mon = mons;
+					attach(c);
+					attachstack(c);
+				}
+				if (m == selmon)
+>>>>>>>
     detachstack(c);
     if (!destroyed) {
         wc.border_width = c->oldbw;

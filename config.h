@@ -57,21 +57,27 @@ static const Rule rules[] = {
 
 /* commands */
 #include <X11/XF86keysym.h>
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2]       = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *dmenucmd[] = { "dmenu_run" };
-static const char *pscrncmd[] = { "printscreen",  NULL};
-static const char *sscrncmd[] = { "selectscreen",  NULL};
-static const char *brupcmd[]  = { "light", "-A", ".33", NULL };
-static const char *brdwcmd[]  = { "light", "-U", ".33", NULL };
+static const char *scrncmd[]  = { "printscreen",  NULL};
+static const char *slctcmd[]  = { "selectscreen",  NULL};
+static const char *brupcmd[]  = { "light", "-A", "1", NULL };
+static const char *brdwcmd[]  = { "light", "-U", "5", NULL };
 static const char *volucmd[]  = { "pactl", "set-sink-volume", "0", "+5%", NULL };
-static const char *voldcmd[]  = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *voldcmd[]  = { "pactl", "set-sink-volume", "0", "-25%", NULL };
 static const char *volmcmd[]  = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *micmcmd[]  = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
+static const char *explcmd[]  = { "kitty", "-e", "vifmrun", NULL };
+static const char *brwscmd[]  = { "qutebrowser", NULL };
+static const char *icbrcmd[]  = { "qutebrowser", "command", ":open -p", NULL };
 static Key keys[]             = {
     /* modifier         key                       function        argument */
     { MODKEY,           XK_p,                     spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask, XK_Return,                spawn,          {.v = termcmd } },
+    { MODKEY,           XK_e,                     spawn,          {.v = explcmd } },
+    { MODKEY,           XK_w,                     spawn,          {.v = brwscmd } },
+    { MODKEY|ShiftMask, XK_w,                     spawn,          {.v = icbrcmd } },
     { MODKEY,           XK_b,                     togglebar,      {0} },
     { MODKEY,           XK_j,                     focusstack,     {.i = +1 } },
     { MODKEY,           XK_k,                     focusstack,     {.i = -1 } },
@@ -94,14 +100,14 @@ static Key keys[]             = {
     { MODKEY,           XK_period,                focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask, XK_comma,                 tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask, XK_period,                tagmon,         {.i = +1 } },
-    { 0,                XK_Print,                 spawn,          {.v = printscreen } },
-    { MODKEY,           XK_Print,                 spawn,          {.v = selectscreen } },
+    { 0,                XK_Print,                 spawn,          {.v = scrncmd } },
+    { MODKEY,           XK_Print,                 spawn,          {.v = slctcmd } },
     { 0,                XF86XK_MonBrightnessUp,   spawn,          {.v = brupcmd } },
     { 0,                XF86XK_MonBrightnessDown, spawn,          {.v = brdwcmd } },
     { 0,                XF86XK_AudioRaiseVolume,  spawn,          {.v = volucmd} },
     { 0,                XF86XK_AudioLowerVolume,  spawn,          {.v = voldcmd} },
     { 0,                XF86XK_AudioMute,         spawn,          {.v = volmcmd} },
-    { 0,                XF86XK_AudioMicMute,       spawn,         {.v = micmcmd} },
+    { 0,                XF86XK_AudioMicMute,      spawn,          {.v = micmcmd} },
     TAGKEYS(            XK_1,                      0)
     TAGKEYS(            XK_2,                      1)
     TAGKEYS(            XK_3,                      2)
