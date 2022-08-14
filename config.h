@@ -13,10 +13,10 @@ static const int topbar            = 0;  /* 0 means bottom bar */
 static const int horizpadbar       = 10;  /* horizontal padding for statusbar */
 static const int vertpadbar        = 10;  /* vertical padding for statusbar */
 static const char *fonts[]         = {
-    "Input Mono: size=12: antialias=true: hinting=true",
-    "FontAwesome: size=10",
+  "FiraMono Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
+	"JoyPixels:pixelsize=14:antialias=true:autohint=true",
 };
-static const char dmenufont[]      = "Input Mono: weight=bold: size=12";
+static const char dmenufont[]      = "FiraMono Nerd Font Mono:pixelsize=14:antialias=true:autohint=true";
 static const char drac_bg[]        = "#282a36";
 static const char drac_bg3[]       = "#1e1f29";
 static const char drac_sel[]       = "#6272a4";
@@ -68,16 +68,17 @@ static const char *volucmd[]  = { "pactl", "set-sink-volume", "0", "+5%", NULL }
 static const char *voldcmd[]  = { "pactl", "set-sink-volume", "0", "-25%", NULL };
 static const char *volmcmd[]  = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *micmcmd[]  = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
-static const char *explcmd[]  = { "kitty", "-e", "vifmrun", NULL };
+static const char *explcmd[]  = { "kitty", "-e", "vifmrun", NULL};
 static const char *brwscmd[]  = { "qutebrowser", NULL };
-static const char *icbrcmd[]  = { "qutebrowser", "command", ":open -p", NULL };
+static const char *ibrwcmd[]  = { "brave", "--incognito", NULL };
+
 static Key keys[]             = {
     /* modifier         key                       function        argument */
     { MODKEY,           XK_p,                     spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask, XK_Return,                spawn,          {.v = termcmd } },
     { MODKEY,           XK_e,                     spawn,          {.v = explcmd } },
     { MODKEY,           XK_w,                     spawn,          {.v = brwscmd } },
-    { MODKEY|ShiftMask, XK_w,                     spawn,          {.v = icbrcmd } },
+    { MODKEY|ShiftMask, XK_w,                     spawn,          {.v = ibrwcmd } },
     { MODKEY,           XK_b,                     togglebar,      {0} },
     { MODKEY,           XK_j,                     focusstack,     {.i = +1 } },
     { MODKEY,           XK_k,                     focusstack,     {.i = -1 } },
@@ -101,7 +102,7 @@ static Key keys[]             = {
     { MODKEY|ShiftMask, XK_comma,                 tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask, XK_period,                tagmon,         {.i = +1 } },
     { 0,                XK_Print,                 spawn,          {.v = scrncmd } },
-    { MODKEY,           XK_Print,                 spawn,          {.v = slctcmd } },
+    { MODKEY,           XK_Print,                 spawn,          {.v = areacmd } },
     { 0,                XF86XK_MonBrightnessUp,   spawn,          {.v = brupcmd } },
     { 0,                XF86XK_MonBrightnessDown, spawn,          {.v = brdwcmd } },
     { 0,                XF86XK_AudioRaiseVolume,  spawn,          {.v = volucmd} },
