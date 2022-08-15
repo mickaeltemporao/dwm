@@ -52,8 +52,10 @@ like this in your .xinitrc:
 
 - [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/dwm-vanitygaps-20200610-f09418b.diff)
 - [statuspadding](https://dwm.suckless.org/patches/statuspadding/dwm-statuspadding-6.3.diff)
+- [attachbottom](https://dwm.suckless.org/patches/attachbottom/dwm-attachbottom-6.2.diff)
 
 Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
