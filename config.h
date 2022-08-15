@@ -61,7 +61,7 @@ static char dmenumon[2]       = "0"; /* component of dmenucmd, manipulated in sp
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *dmenucmd[] = { "dmenu_run" };
 static const char *scrncmd[]  = { "printscreen",  NULL};
-static const char *slctcmd[]  = { "selectscreen",  NULL};
+static const char *areacmd[]  = { "selectscreen",  NULL};
 static const char *brupcmd[]  = { "light", "-A", "1", NULL };
 static const char *brdwcmd[]  = { "light", "-U", "5", NULL };
 static const char *volucmd[]  = { "pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -114,10 +114,6 @@ static Key keys[]             = {
     TAGKEYS(            XK_3,                      2)
     TAGKEYS(            XK_4,                      3)
     TAGKEYS(            XK_5,                      4)
-    TAGKEYS(            XK_6,                      5)
-    TAGKEYS(            XK_7,                      6)
-    TAGKEYS(            XK_8,                      7)
-    TAGKEYS(            XK_9,                      8)
     { MODKEY|ShiftMask, XK_q,      quit,           {0} },
 };
 
